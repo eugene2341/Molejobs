@@ -1,12 +1,20 @@
-const express = require('express');
+// This will read the .env file, parse the contents, 
+// assign it to process.env, and make it accessible throughout the app
+require("dotenv").config();
+
+const express = require("express");
 const app = express(); // sets up server with al features and utilities provided by express
-const port = 3012;
+const port = process.env.PORT || 3000; // sets port to 3000 if not specified in .env file
+
+const testPostgresConnection = require("./controllers/testPostgresConnection");
 
 // when get req made, res back hello world
-app.get('/', (req, res) => {
-  res.send('Hello World!');
+app.get("/", (req, res) => {
+    res.send("Hello World!");
 });
 
+testPostgresConnection(app);
+
 app.listen(port, () => {
-  console.log(`Server listening on localhost:${port}`);
+    console.log(`Server listening on localhost:${port}`);
 });
