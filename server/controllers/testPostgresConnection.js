@@ -1,7 +1,7 @@
 // server.js or app.js
 const express = require("express");
 const { Pool } = require("pg");
-const dbConfig = require("../config/dbConfig");
+const dbConfig = require("../config/postgreConfig");
 
 const pool = new Pool(dbConfig);
 
