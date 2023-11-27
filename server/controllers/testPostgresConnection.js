@@ -1,11 +1,12 @@
 // server.js or app.js
 const express = require("express");
-const { Pool } = require("pg");
+const { Pool, Client } = require("pg");
 const dbConfig = require("../config/postgreConfig");
 
-const pool = new Pool(dbConfig);
-
 async function testPostgresConnection(app) {
+    const pool = new Pool(dbConfig);
+    // const client = new Client(dbConfig);
+    pool.connect();
     app.get("/test-db", async (req, res) => {
         try {
             // return the current date and time from the database if successful

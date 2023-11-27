@@ -4,7 +4,7 @@ require("dotenv").config();
 
 const express = require("express");
 const app = express(); // sets up server with al features and utilities provided by express
-const port = process.env.PORT || 3001; // sets port to 3000 if not specified in .env file
+const port = process.env.RDS_PORT || 3001; // sets port to 3000 if not specified in .env file
 
 const testPostgresConnection = require("./controllers/testPostgresConnection");
 
